@@ -1,5 +1,8 @@
 //Contacts page code
 
+import { Fragment } from 'react';
+import Head from 'next/head';
+
 const temp_contacts = [
     {
         Name: 'Vineeth',
@@ -9,9 +12,15 @@ const temp_contacts = [
 
 function ContactsPage() {
     return (
-        <div>
-            temp_contacts
-        </div>
+        <Fragment>
+            <Head>
+                <title>Contact List</title>
+            </Head>
+            <div>
+                temp_contacts
+            </div>
+        </Fragment>
+        
     );
 }
 
