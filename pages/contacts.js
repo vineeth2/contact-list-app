@@ -1,7 +1,18 @@
 //Contacts page code
 
+const temp_contacts = [
+    {
+        Name: 'Vineeth',
+        Email: 'vineeth.krishnamurthy@ondotsystems.com'
+    }
+]
+
 function ContactsPage() {
-    return <h1>See your contacts below.</h1>
+    return (
+        <div>
+            temp_contacts
+        </div>
+    );
 }
 
 export default ContactsPage;
