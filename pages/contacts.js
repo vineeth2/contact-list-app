@@ -2,6 +2,7 @@
 
 import { Fragment } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 const temp_contacts = [
     {
@@ -19,6 +20,10 @@ function ContactsPage() {
             <div>
                 temp_contacts
             </div>
+            <h2>
+                <Link href="/add-contact">Add New Contact</Link>
+            </h2>
+            <Link href='/'>Back to home</Link>
         </Fragment>
         
     );
