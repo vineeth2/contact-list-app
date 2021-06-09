@@ -7,9 +7,6 @@ function HomePage() {
         //takes you to contacts page
         <Fragment>
             <h1>Welcome to Contacts!</h1>
-            <h2>
-                <Link href="/contacts">NEW CONTACT LIST</Link>
-            </h2>
         </Fragment>
     );
 }

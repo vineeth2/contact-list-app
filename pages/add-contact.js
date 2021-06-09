@@ -11,7 +11,6 @@ function addContactPage() {
                 <title>Add Contact</title>
             </Head>
             <h1>Add a new contact below</h1>
-            <Link href='/'>Back to home</Link>
         </Fragment>
     );
 }
