@@ -53,7 +53,7 @@ function NewContactForm(props) {
               <input type='text' required id='address' ref={addressRef} />
             </div>
             <div className={classes.actions}>
-              <button>Add Meetup</button>
+              <button>Add Contact</button>
             </div>
           </form>
         </Card>
