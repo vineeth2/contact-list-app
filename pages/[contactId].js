@@ -4,8 +4,9 @@ import ContactDetails from '../components/ContactDetails'
 function viewContactPage() {
     return (
        <ContactDetails 
-            name= "Eric" 
-            number= "123-456-7890"
+            fname= "Eric" 
+            lname= "Shavkin"
+            phone= "123-456-7890"
             email= "eric.shavkin@ondotsystems.com"
             address= "321 address way"
             id= 'contact-1'
@@ -39,8 +40,9 @@ export async function getStaticProps(context) {
     return {
         props: {
             contactDetails: {
-                name: "Eric", 
-                number: "123-456-7890",
+                fname: "Eric", 
+                lname: "Shavkin",
+                phone: "123-456-7890",
                 email: "eric.shavkin@ondotsystems.com",
                 address: "321 address way",
                 id: contactId,
