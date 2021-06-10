@@ -6,8 +6,10 @@ function ContactList(props) {
         <ul className={classes.list}>
         {props.contacts.map((contact) => (
             <Contact
-            name={contact.name}
+            fname={contact.fname}
+            lname={contact.lname}
             email={contact.email}
+            phone={contact.phone}
             address={contact.address}
             />
         ))}
