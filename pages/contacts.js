@@ -1,6 +1,6 @@
 //Contacts page code
 import ContactList from '../components/ContactList';
-import { MongoClient} from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 const temp_contacts = [
     {
@@ -38,15 +38,14 @@ export async function getStaticProps() {
     return {
         props: {
             contacts: contacts.map(contact => ({
-                fname: contact.fname,
-                lname: contact.lname,
+                name: contact.name,
                 email: contact.email,
                 address: contact.address,
-                phone: contact.phone,
+                number: contact.number,
                 id: contact._id.toString(),
             }))
         },
-        revalidate: 10,
+        revalidate: 10
     }
 }
 
