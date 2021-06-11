@@ -7,10 +7,7 @@ function NavigationBar() {
             <div>
                 <ul className={classes.ul}>
                     <li>
-                        <Link href='/'>Home</Link>
-                    </li>
-                    <li>
-                        <Link href='/contacts'>Contact List</Link>
+                        <Link href='/'>Contact List</Link>
                     </li>
                     <li>
                         <Link href='/add-contact'>Add Contact</Link>
