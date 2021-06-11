@@ -14,8 +14,8 @@ function Contact(props) {
         <li className={classes.item}>
             <Card>
                 <div className={classes.content}>
-                    <h3>{props.name}</h3>
-                    <address>{props.address}</address>
+                    <h3>{props.fname} {props.lname}</h3>
+                    <h4>{props.phone}</h4>
                 </div>
                 <div className={classes.actions}>
                     <button onClick={showDetailsHandler}>Show Details</button>
