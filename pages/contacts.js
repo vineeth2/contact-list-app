@@ -38,10 +38,11 @@ export async function getStaticProps() {
     return {
         props: {
             contacts: contacts.map(contact => ({
-                name: contact.name,
+                fname: contact.fname,
+                lname: contact.lname,
                 email: contact.email,
+                phone: contact.phone,
                 address: contact.address,
-                number: contact.number,
                 id: contact._id.toString(),
             }))
         },
