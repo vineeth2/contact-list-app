@@ -1,16 +1,31 @@
 import { Fragment } from 'react';
 import ContactDetails from '../components/ContactDetails'
 import { MongoClient, ObjectId } from 'mongodb';
+import { useRouter } from 'next/router';
 
 function viewContactPage(props) {
+    const router = useRouter();
+
+    function editContactHandler() {
+        router.push('/');
+    }
+
+    function deleteContactHandler() {
+        router.push('/delete-contact');
+    }
+
     return (
-       <ContactDetails 
-            fname= {props.contactDetails.fname}
-            lname= {props.contactDetails.lname}
-            phone= {props.contactDetails.phone}
-            email= {props.contactDetails.email}
-            address= {props.contactDetails.address}
-       />
+        <Fragment>
+            <ContactDetails 
+                fname= {props.contactDetails.fname}
+                lname= {props.contactDetails.lname}
+                phone= {props.contactDetails.phone}
+                email= {props.contactDetails.email}
+                address= {props.contactDetails.address}
+            />  
+            <button onClick={editContactHandler}>Edit Contact</button>
+            <button onClick={deleteContactHandler}>Delete Contact</button>
+       </Fragment>
     );
 }
 

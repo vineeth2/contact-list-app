@@ -8,7 +8,6 @@ import { useRouter } from 'next/router'
 
 function addContactPage() {
     const router = useRouter();
-
     async function addContactHandler(enteredContactData) {
         const response = await fetch('/api/new-contact', {
             method: 'POST', 
@@ -21,7 +20,7 @@ function addContactPage() {
         const data = await response.json();
         console.log(data);
 
-        router.push('/');
+        router.push('/contacts');
     }
 
     return (

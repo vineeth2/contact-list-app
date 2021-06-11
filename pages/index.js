@@ -1,35 +1,14 @@
-//Contacts page code
-import ContactList from '../components/ContactList';
-import { MongoClient } from 'mongodb';
+//Home page Code
+import Link from 'next/link';
+import { Fragment } from 'react';
 
-function ContactsPage(props) {
+function HomePage() {
     return (
-        <ContactList contacts={props.contacts} />
+        //takes you to contacts page
+        <Fragment>
+            <h1>Welcome to Contacts!</h1>
+        </Fragment>
     );
 }
 
-export async function getStaticProps() {
-    const client = await MongoClient.connect('mongodb+srv://Vineeth-krishnamurthy:Workplace@1234@cluster0.w5sbi.mongodb.net/contacts?retryWrites=true&w=majority');
-    const db = client.db();                 //mongodb+srv://Vineeth-krishnamurthy:Workplace@1234@cluster0.w5sbi.mongodb.net/contacts?retryWrites=true&w=majority
-    const contactsCollection = db.collection('contacts');
-
-    const contacts = await contactsCollection.find().toArray();
-
-    client.close();
-
-    return {
-        props: {
-            contacts: contacts.map(contact => ({
-                fname: contact.fname,
-                lname: contact.lname,
-                email: contact.email,
-                phone: contact.phone,
-                address: contact.address,
-                id: contact._id.toString(),
-            }))
-        },
-        revalidate: 1,
-    }
-}
-
-export default ContactsPage;
+export default HomePage;
