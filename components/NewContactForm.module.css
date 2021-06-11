@@ -1,5 +1,31 @@
 .form {
-    padding: 1rem;
+    background: #fff;
+    box-shadow: 0 30px 60px 0 rgba(90,116,148,0.4);
+    border-radius: 5px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    border-top: 5px solid #0e3721;
+}
+
+.name {
+    background-color: #ebebeb;
+    color: white;
+}
+
+.formEntry {
+    display: block;
+    margin: 30px auto;
+    min-width: 300px;
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+    transition: all 0.5s ease 0s;
 }
   
 .control {
@@ -22,6 +48,22 @@ padding: 0.25rem;
 width: 100%;
 }
 
+.goBack {
+    margin-top: 0rem;
+    text-align: left;
+}
+
+.goBack button {
+font: inherit;
+cursor: pointer;
+background-color: #0e3721;
+color: white;
+padding: 0.5rem 1.5rem;
+border: 1px solid #0e3721;
+border-radius: 4px;
+font-weight: bold;
+}
+
 .actions {
 margin-top: 1rem;
 text-align: right;
@@ -30,10 +72,10 @@ text-align: right;
 .actions button {
 font: inherit;
 cursor: pointer;
-background-color: #77002e;
+background-color: #0e3721;
 color: white;
 padding: 0.5rem 1.5rem;
-border: 1px solid #77002e;
+border: 1px solid #0e3721;
 border-radius: 4px;
 font-weight: bold;
 }

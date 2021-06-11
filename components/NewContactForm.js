@@ -31,29 +31,28 @@ function NewContactForm(props) {
     }
     return (
         <Card>
-          <form className={classes.form} onSubmit={submitHandler}>
-            <div className={classes.control}>
-              <label htmlFor='fname'>First Name</label>
-              <input type='text' required id='fname' ref={fnameRef} />
+          <form class="form" onSubmit={submitHandler}>
+            <div class="pageTitle title">New Contact</div>
+            <div>
+                <input type='text' class="name formEntry" placeholder="First Name" required id='fname' ref={fnameRef} />
             </div>
-            <div className={classes.control}>
-              <label htmlFor='lname'>Last Name</label>
-              <input type='text' required id='lname' ref={lnameRef} />
+            <div>
+                <input type='text' class="name formEntry" placeholder="Last Name" required id='lname' ref={lnameRef} />
             </div>
-            <div className={classes.control}>
-              <label htmlFor='email'>Email</label>
-              <input type='text' required id='email' ref={emailRef} />
+            <div>
+                <input type='text' class="email formEntry" placeholder="Email" required id='email' ref={emailRef} />
             </div>
-            <div className={classes.control}>
-              <label htmlFor='phone'>Phone Number</label>
-              <input type='text' required id='phone' ref={phoneRef} />
+            <div>
+                <input type='text' class="name formEntry" placeholder="Phone Number" required id='phone' ref={phoneRef} />
             </div>
-            <div className={classes.control}>
-              <label htmlFor='address'>Address</label>
-              <input type='text' required id='address' ref={addressRef} />
+            <div>
+                <input type='text' class="name formEntry" placeholder="Address" required id='address' ref={addressRef} />
             </div>
             <div className={classes.actions}>
               <button>Add Contact</button>
+            </div>
+            <div className={classes.goBack}>
+              <button>Back to Home</button>
             </div>
           </form>
         </Card>
