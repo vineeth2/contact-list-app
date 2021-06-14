@@ -5,22 +5,14 @@ import Head from 'next/head';
 import Link from 'next/link';
 import NewContactForm from '/components/NewContactForm';
 import { useRouter } from 'next/router'
+import return_array from './temp_array';
 
 function addContactPage() {
     const router = useRouter();
     async function addContactHandler(enteredContactData) {
-        const response = await fetch('/api/new-contact', {
-            method: 'POST', 
-            body: JSON.stringify(enteredContactData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        const data = await response.json();
-        console.log(data);
-
-        router.push('/contacts');
+        var temp1 = return_array;
+        temp1.push(enteredContactData);
+        console.log(return_array);
     }
 
     return (
@@ -35,5 +27,6 @@ function addContactPage() {
 }
 
 //test comment
+
 
 export default addContactPage;

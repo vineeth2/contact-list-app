@@ -2,9 +2,11 @@
 import ContactList from '../components/ContactList';
 import { MongoClient } from 'mongodb';
 
+var temp = [];
+
 function ContactsPage(props) {
     return (
-        <ContactList contacts={props.contacts} />
+        <ContactList contacts={temp} />
     );
 }
 
@@ -32,4 +34,5 @@ export async function getStaticProps() {
     }
 }
 
+module.exports = temp;
 export default ContactsPage;
