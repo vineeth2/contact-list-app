@@ -4,7 +4,7 @@ import ContactList from '../components/ContactList';
 
 const temp_contacts = []
 
-function ContactsPage(props) {
+function ContactsPage() {
     return (
         <ContactList contacts={temp_contacts} />
     );

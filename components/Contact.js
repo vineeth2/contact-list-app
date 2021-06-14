@@ -8,7 +8,8 @@ import Card from './card/Card';
 function Contact(props) {
     const router = useRouter();
     function showDetailsHandler() {
-        router.push('/' + props.id);
+        console.log("View page");
+        router.push('/' + props.index.toString());
     }
     return (
         <li className={classes.item}>

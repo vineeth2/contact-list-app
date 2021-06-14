@@ -4,11 +4,11 @@ import { Fragment } from "react";
 import Head from 'next/head';
 import Link from 'next/link';
 import NewContactForm from '/components/NewContactForm';
-//import { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { temp_contacts } from './contacts';
 
 function addContactPage() {
-    //const router = useRouter();
+    const router = useRouter();
     async function addContactHandler(enteredContactData) {
         const temp_data = {
             fname: enteredContactData.fname,
@@ -20,6 +20,7 @@ function addContactPage() {
         }
         temp_contacts.push(temp_data);
         console.log(temp_contacts);
+        router.push('/contacts');
     }
 
     return (
