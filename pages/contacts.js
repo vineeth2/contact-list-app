@@ -2,16 +2,7 @@
 import ContactList from '../components/ContactList';
 //import { MongoClient } from 'mongodb';
 
-const temp_contacts = [
-    {
-        fname: "Vineeth",
-        lname: "Krishnamurthy",
-        email: "vineeth@gmail.com",
-        phone: "92340852",
-        address: "123 way st",
-        //id: "1"
-    }
-]
+const temp_contacts = []
 
 function ContactsPage(props) {
     return (

@@ -10,7 +10,16 @@ import { temp_contacts } from './contacts';
 function addContactPage() {
     //const router = useRouter();
     async function addContactHandler(enteredContactData) {
-        temp_contacts.push(enteredContactData);
+        const temp_data = {
+            fname: enteredContactData.fname,
+            lname: enteredContactData.lname,
+            email: enteredContactData.email,
+            phone: enteredContactData.phone,
+            address: enteredContactData.address,
+            index: temp_contacts.length
+        }
+        temp_contacts.push(temp_data);
+        console.log(temp_contacts);
     }
 
     return (
