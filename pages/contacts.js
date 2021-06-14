@@ -1,13 +1,25 @@
 //Contacts page code
 import ContactList from '../components/ContactList';
-import { MongoClient } from 'mongodb';
+//import { MongoClient } from 'mongodb';
+
+const temp_contacts = [
+    {
+        fname: "Vineeth",
+        lname: "Krishnamurthy",
+        email: "vineeth@gmail.com",
+        phone: "92340852",
+        address: "123 way st",
+        //id: "1"
+    }
+]
 
 function ContactsPage(props) {
     return (
-        <ContactList contacts={props.contacts} />
+        <ContactList contacts={temp_contacts} />
     );
 }
 
+/*
 export async function getStaticProps() {
     const client = await MongoClient.connect('mongodb+srv://ericshavkin:adminpass12321@cluster0.w5sbi.mongodb.net/contacts?retryWrites=true&w=majority');
     const db = client.db();
@@ -27,9 +39,12 @@ export async function getStaticProps() {
                 address: contact.address,
                 id: contact._id.toString(),
             }))
-        },
+        }
         revalidate: 1,
     }
 }
+*/
+
+export { temp_contacts };
 
 export default ContactsPage;
