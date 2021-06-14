@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
 import ContactDetails from '../components/ContactDetails'
-import { MongoClient, ObjectId } from 'mongodb';
+//import { MongoClient, ObjectId } from 'mongodb';
 import { useRouter } from 'next/router';
+import { contacts, getAll, get } from '../libs/store'
 
 function viewContactPage(props) {
     const router = useRouter();
@@ -14,58 +15,58 @@ function viewContactPage(props) {
         router.push('/delete-contact');
     }
 
+    if(!props.contactDetails) {
+        return null
+    }
+
+    console.log('something')
+
     return (
-        <Fragment>
+        <>
             <ContactDetails 
                 fname= {props.contactDetails.fname}
                 lname= {props.contactDetails.lname}
                 phone= {props.contactDetails.phone}
                 email= {props.contactDetails.email}
                 address= {props.contactDetails.address}
-            />  
+            />
+            <div>hello</div>
             <button onClick={editContactHandler}>Edit Contact</button>
             <button onClick={deleteContactHandler}>Delete Contact</button>
-       </Fragment>
+       </>
     );
 }
 
 export async function getStaticPaths() {
-
-    const client = await MongoClient.connect('mongodb+srv://ericshavkin:adminpass12321@cluster0.w5sbi.mongodb.net/contacts?retryWrites=true&w=majority');
-    const db = client.db();
-    const contactsCollection = db.collection('contacts');
-    const contacts = await contactsCollection.find({}, {_id: 1}).toArray();
-
-    client.close();
-
     return {
         fallback: true,
         paths: 
             contacts.map(contact => ({
                 params: {
-                    contactId: contact._id.toString()
+                    contactId: contact.index.toString()
                 }
             })),
     }
 }
 
 export async function getStaticProps(context) {
-    
+    //var contacts = getAll()
     const contactId = context.params.contactId;
-    
-    const client = await MongoClient.connect('mongodb+srv://ericshavkin:adminpass12321@cluster0.w5sbi.mongodb.net/contacts?retryWrites=true&w=majority');
-    const db = client.db();
-    const contactsCollection = db.collection('contacts');
-    const selectedContact = await contactsCollection.findOne({
-        _id: ObjectId(contactId)
-    });
+    console.log('contactId', contactId);
+    console.log('contacts', contacts);
+    if(contactId >= contacts.length) {
+        return null
+    }
+    const selectedContact = get(contactId);
 
-    client.close();
+    fetch('api/contacts/' + contactId)
+        .then(response => response.json())
+        .then(data => console.log('data', data))
 
     return {
         props: {
             contactDetails: {
-                id: selectedContact._id.toString(),
+                index: selectedContact.index.toString(),
                 fname: selectedContact.fname,
                 lname: selectedContact.lname,
                 phone: selectedContact.phone,

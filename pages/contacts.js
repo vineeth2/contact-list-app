@@ -1,12 +1,12 @@
 //Contacts page code
 import ContactList from '../components/ContactList';
-//import { MongoClient } from 'mongodb';
+import { getAll } from '../libs/store';
 
-const temp_contacts = []
-
-function ContactsPage(props) {
+function ContactsPage() {
+    var contacts = getAll()
+    //console.log('contacts', contacts)
     return (
-        <ContactList contacts={temp_contacts} />
+        <ContactList contacts={getAll()} />
     );
 }
 
@@ -35,7 +35,5 @@ export async function getStaticProps() {
     }
 }
 */
-
-export { temp_contacts };
 
 export default ContactsPage;

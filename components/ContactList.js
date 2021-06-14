@@ -11,7 +11,7 @@ function ContactList(props) {
             email={contact.email}
             phone={contact.phone}
             address={contact.address}
-            //id={contact.id}
+            index={contact.index}
             />
         ))}
         </ul>
