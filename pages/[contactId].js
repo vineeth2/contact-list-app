@@ -12,7 +12,27 @@ function viewContactPage(props) {
     }
 
     function deleteContactHandler() {
-        router.push('/delete-contact');
+        //router.push('/delete-contact');
+        const ind = props.contactDetails.index; //gets the proper index
+        console.log('index', ind)
+        const contactsCopy = [];
+        for (var i = 0; i < contacts.length; i++) { //copies contacts array into a dummy array
+            contactsCopy.push(contacts[i]);
+        }
+        console.log('contacts', contacts);
+        console.log('contatcsCopy', contactsCopy);
+        contacts.splice(ind, 1);  //deletes proper index from contacts array
+        /*for (var i = ind; i < contactsCopy.length; i++) { 
+            contacts[i + 1] = contactsCopy[i];
+        }*/
+        contacts.forEach((contact, m) => {  //attempt at a loop to decrement index
+            console.log('contact', contact);  //problem comes when trying to view details
+            if (contact.index > ind) {        //indices no longer match 
+                contact.index -= 1;
+            }
+        });
+
+        router.push('/contacts');
     }
 
     if (!props.contactDetails) {
@@ -57,14 +77,14 @@ export async function getStaticProps(context) {
     }
     const selectedContact = get(contactId);
 
-    fetch('api/contacts/' + contactId)
+    /*fetch('api/contacts/' + contactId)
         .then(response => response.json())
-        .then(data => console.log('data', data))
+        .then(data => console.log('data', data))*/
 
     return {
         props: {
             contactDetails: {
-                index: selectedContact.index.toString(),
+                index: selectedContact.index,
                 fname: selectedContact.fname,
                 lname: selectedContact.lname,
                 phone: selectedContact.phone,
