@@ -15,11 +15,9 @@ function viewContactPage(props) {
         router.push('/delete-contact');
     }
 
-    if(!props.contactDetails) {
+    if (!props.contactDetails) {
         return null
     }
-
-    console.log('something')
 
     return (
         <>
