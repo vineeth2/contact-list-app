@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import Card from './card/Card';
-import classes from './EditContactForm.module.css';
+import classes from './NewContactForm.module.css';
 //import { numericInput, enforceFormat, validatePhone } from './FormValidation';
 import React, { useState, useEffect } from 'react';
 //import React from 'react';
@@ -12,7 +12,8 @@ function EditContactForm(props) {
     const emailRef = useRef();
     const phoneRef = useRef();
     const addressRef = useRef();
-    const [emailValid, setEmailValid] = useState(true)
+    const [emailValid, setEmailValid] = useState(true);
+    const [phoneValid, setPhoneValid] = useState(true);
 
     function submitHandler(event) {
         event.preventDefault();
@@ -41,35 +42,90 @@ function EditContactForm(props) {
         } else {
             setEmailValid(false);
         }
-
     }
+
+    function checkPhone(event) {                //Checks to see if the phone is actually a number.
+        const phone = phoneRef.current.value;
+        if (Number.isInteger(parseInt(phone))) {
+            if (phone.length == 10) {
+                phoneRef.current.value = formatPhone(phone);
+                setPhoneValid(true);
+            }
+        } else if (!Number.isInteger(parseInt(phone))) {
+            console.log("Not integer!");
+            setPhoneValid(false);
+        } else {
+            setPhoneValid(true);
+        }
+    }
+
+    function formatPhone(phoneNumber) {         //formats United States phone numbers.
+        var formattedNumber = "";
+        const areaCode = phoneNumber.substring(0,3);
+        const middle = phoneNumber.substring(3,6);
+        const ending = phoneNumber.substring(6,10);
+
+        formattedNumber = '(' + areaCode + ') ' + middle + ' - ' + ending;
+
+        return formattedNumber;
+    }
+
     return (
         <Card>
           <form className={classes.form} onSubmit={submitHandler}>
             <div className={classes.control}>
-              <label htmlFor='fname'>First Name</label>
-              <input type='text' placeholder="First Name" required id='fname' ref={fnameRef} />
+              <input 
+                type='text' 
+                placeholder="First Name"    //First Name
+                required id='fname' 
+                ref={fnameRef} />
             </div>
+
             <div className={classes.control}>
-              <label htmlFor='lname'>Last Name</label>
-              <input type='text' placeholder="Last Name" required id='lname' ref={lnameRef} />
+              <input 
+                type='text' 
+                placeholder="Last Name"     //Last Name
+                required id='lname' 
+                ref={lnameRef} />
             </div>
+
             <div className={classes.control}>
-              <label htmlFor='email'>Email</label>
-              <input type='text' placeholder="Email" required id='email' ref={emailRef} onChange={checkEmail}/>
-              { emailValid ? null : (<Alert color="warning">
-                <span className="alert-icon"><i class="ni ni-like-2"></i></span>
-                <span className="alert-text"><strong>Please Enter a Valid Email.</strong></span>
-              </Alert>) }
+              <input 
+                type='text' 
+                placeholder="Email"         //Email Address
+                required id='email' 
+                ref={emailRef} 
+                onChange={checkEmail} />
+
+              { emailValid ? null 
+                           : (<Alert color="warning">
+                                <span className="alert-icon"><i class="ni ni-like-2"></i></span>
+                                <span className="alert-text"><strong>Please Enter a Valid Email.</strong></span>
+                              </Alert>) }
             </div>
+
             <div className={classes.control}>
-                <label htmlFor='phone'>Phone Number</label>
-                <input type='number' placeholder="Phone Number" required id='phone' maxLength='16' ref={phoneRef} />
+              <input 
+                type='text' 
+                placeholder="Phone Number"  //Phone Number
+                required id='phone' 
+                ref={phoneRef} 
+                onChange={checkPhone} />
+              { phoneValid ? null 
+                           : (<Alert color="warning">
+                                <span className="alert-icon"><i class="ni ni-like-2"></i></span>
+                                <span className="alert-text"><strong>Please Enter a Valid Number.</strong></span>
+                              </Alert>)}
             </div>
+
             <div className={classes.control}>
-              <label htmlFor='address'>Address</label>
-              <input type='text' placeholder="Address" required id='address' ref={addressRef} />
+              <input 
+                type='text' 
+                placeholder="Address"       //Home Address
+                required id='address' 
+                ref={addressRef} />
             </div>
+
             <div className={classes.actions}>
               <button>Edit Contact</button>
             </div>

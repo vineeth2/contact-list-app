@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import ContactDetails from '../components/ContactDetails'
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 function viewContactPage(props) {
     const router = useRouter();
@@ -70,7 +71,10 @@ function viewContactPage(props) {
     }
 
     return (
-        <>
+        <Fragment>
+            <Head>
+                <title>{props.contactDetails.fname} {props.contactDetails.lname}</title>
+            </Head>
             <ContactDetails 
                 fname= {props.contactDetails.fname}
                 lname= {props.contactDetails.lname}
@@ -79,10 +83,9 @@ function viewContactPage(props) {
                 address= {props.contactDetails.address}
                 id= {props.contactDetails.id}
             />
-            <div>hello</div>
             <button onClick={editContactHandler}>Edit Contact</button>
             <button onClick={deleteContactHandler}>Delete Contact</button>
-       </>
+       </Fragment>
     );
 }
 

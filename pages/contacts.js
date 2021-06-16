@@ -1,9 +1,16 @@
 //Contacts page code
 import ContactList from '../components/ContactList';
+import Head from 'next/head';
+import { Fragment } from 'react';
 
 function ContactsPage({ contacts }) {
     return (
-        <ContactList contacts={contacts} />
+        <Fragment>
+            <Head>
+                <title>View Contact List</title>
+            </Head>
+            <ContactList contacts={contacts} />
+        </Fragment>
     );
 }
 
