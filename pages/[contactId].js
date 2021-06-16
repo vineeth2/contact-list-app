@@ -1,36 +1,63 @@
 import { Fragment } from 'react';
 import ContactDetails from '../components/ContactDetails'
-//import { MongoClient, ObjectId } from 'mongodb';
 import { useRouter } from 'next/router';
-import { contacts, getAll, get } from '../libs/store'
 
 function viewContactPage(props) {
     const router = useRouter();
 
-    function editContactHandler() {
-        router.push('/');
+    async function editContactHandler() {
+        const ind = props.contactDetails.index;
+        const response = await fetch('/api/contacts', {
+            method: 'PATCH',
+            body: JSON.stringify(ind),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        router.push('/edit-contact');
+        /*const response2 = await fetch('/api/contacts', {
+            method: 'POST',
+            body: JSON.stringify(enteredContactData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response2.json();
+        console.log('data', data)
+        router.push('/contacts')
+
+        return (
+            <NewContactForm onAddContact={addContact} />
+        )*/
     }
 
-    function deleteContactHandler() {
-        //router.push('/delete-contact');
-        const ind = props.contactDetails.index; //gets the proper index
+    async function deleteContactHandler() {
+        const ind = props.contactDetails.index;
         console.log('index', ind)
-        const contactsCopy = [];
-        for (var i = 0; i < contacts.length; i++) { //copies contacts array into a dummy array
-            contactsCopy.push(contacts[i]);
-        }
-        console.log('contacts', contacts);
-        console.log('contatcsCopy', contactsCopy);
-        contacts.splice(ind, 1);  //deletes proper index from contacts array
-        /*for (var i = ind; i < contactsCopy.length; i++) { 
-            contacts[i + 1] = contactsCopy[i];
-        }*/
+
+        const response = await fetch('/api/contacts', {
+            method: 'DELETE',
+            body: JSON.stringify(ind),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+
+        console.log('data', data);
+        //console.log('contacts', contacts);
+
+        //const del = contacts.splice(ind, 1);
+        //console.log('del', del);
+
+        /*
         contacts.forEach((contact, m) => {  //attempt at a loop to decrement index
             console.log('contact', contact);  //problem comes when trying to view details
             if (contact.index > ind) {        //indices no longer match 
                 contact.index -= 1;
             }
-        });
+        });*/
 
         router.push('/contacts');
     }
@@ -55,7 +82,11 @@ function viewContactPage(props) {
     );
 }
 
+
 export async function getStaticPaths() {
+    const response = await fetch('http://localhost:3000/api/contacts');
+    const contacts = await response.json();
+    
     return {
         fallback: true,
         paths: 
@@ -68,18 +99,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-    //var contacts = getAll()
     const contactId = context.params.contactId;
-    console.log('contactId', contactId);
-    console.log('contacts', contacts);
-    if(contactId >= contacts.length) {
-        return null
-    }
-    const selectedContact = get(contactId);
 
-    /*fetch('api/contacts/' + contactId)
-        .then(response => response.json())
-        .then(data => console.log('data', data))*/
+    const response = await fetch('http://localhost:3000/api/contacts');
+    const contacts = await response.json();
+
+    const selectedContact = contacts[contactId];
+    //const selectedContact = get(contactId);
 
     return {
         props: {

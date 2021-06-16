@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-
 import classes from './Contact.module.css';
 import Card from './card/Card';
 
@@ -8,7 +7,7 @@ import Card from './card/Card';
 function Contact(props) {
     const router = useRouter();
     function showDetailsHandler() {
-        console.log("View page");
+        console.log("View page: ", props.index);
         router.push('/' + props.index, null, { shallow: true });
     }
     return (

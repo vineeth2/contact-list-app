@@ -3,20 +3,21 @@ import Head from 'next/head';
 import Link from 'next/link';
 import NewContactForm from '/components/NewContactForm';
 import { useRouter } from 'next/router'
+import { contacts } from '../libs/store'
 
-function addContactPage() {
+function editContactPage() {
     const router = useRouter();
-    async function addContactHandler(enteredContactData) {
-        const response = await fetch('/api/new-contact', {
-            method: 'POST', 
+    async function editContactHandler(enteredContactData) {
+        const response2 = await fetch('/api/new-contact', {
+            method: 'PUT', 
             body: JSON.stringify(enteredContactData),
             headers: {
                 'Content-Type': 'application/json'
             }
         });
 
-        const data = await response.json();
-        console.log(data);
+        const data2 = await response2.json();
+        console.log('data', data2);
 
         router.push('/contacts');
     }
@@ -24,13 +25,13 @@ function addContactPage() {
     return (
         <Fragment>
             <Head>
-                <title>Add Contact</title>
+                <title>Edit Contact</title>
             </Head>
-            <h1>Add a new contact below</h1>
-            <NewContactForm onAddContact={addContactHandler} />
+            <h1>Edit an existing contact below</h1>
+            <NewContactForm onAddContact={editContactHandler} />
             <Link href='/'>Back to home</Link>
         </Fragment>
     );
 }
 
-export default addContactPage;
+export default editContactPage;

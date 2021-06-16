@@ -1,24 +1,20 @@
 //Contacts page code
 import ContactList from '../components/ContactList';
-import { getAll } from '../libs/store';
 
-function ContactsPage() {
-    var contacts = getAll()
-    //console.log('contacts', contacts)
+function ContactsPage({ contacts }) {
+    /*for (let i = 0; i < contacts.length; i++) {
+        contacts[i].index = i;
+    }*/
+
     return (
-        <ContactList contacts={getAll()} />
+        <ContactList contacts={contacts} />
     );
 }
 
-/*
 export async function getStaticProps() {
-    const client = await MongoClient.connect('mongodb+srv://ericshavkin:adminpass12321@cluster0.w5sbi.mongodb.net/contacts?retryWrites=true&w=majority');
-    const db = client.db();
-    const contactsCollection = db.collection('contacts');
 
-    const contacts = await contactsCollection.find().toArray();
-
-    client.close();
+    const response = await fetch('http://localhost:3000/api/contacts');
+    const contacts = await response.json();
 
     return {
         props: {
@@ -28,12 +24,11 @@ export async function getStaticProps() {
                 email: contact.email,
                 phone: contact.phone,
                 address: contact.address,
-                id: contact._id.toString(),
+                index: contact.index,
             }))
-        }
-        revalidate: 1,
+        },
     }
 }
-*/
+
 
 export default ContactsPage;
