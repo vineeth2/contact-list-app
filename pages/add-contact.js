@@ -9,9 +9,9 @@ import { useRouter } from 'next/router'
 function addContactPage() {
     const router = useRouter();
     async function addContactHandler(enteredContactData) {
-
-        const response = await fetch('/api/contacts', {
-            method: 'POST', 
+        console.log('entered data', enteredContactData)
+        const response = await fetch('http://localhost:3000/api/contacts', {
+            method: 'POST',
             body: JSON.stringify(enteredContactData),
             headers: {
                 'Content-Type': 'application/json'
@@ -19,15 +19,6 @@ function addContactPage() {
         });
 
         const data = await response.json();
-
-        /*for (let i = 0; i < data.length; i++) {
-            if (i < contacts.length) {
-                contacts[i] = data[i];
-            } else {
-                contacts.push(data[i]);
-            }
-        }*/
-        //contacts.push(data[data.length - 1]);
 
         console.log('data', data);
         router.push('/contacts', null, { shallow: true })

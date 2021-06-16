@@ -17,17 +17,14 @@ export const getAll = () => {
 
 export const remove = (index) => {
     contacts.splice(index, 1)
+    for (let i = index; i < contacts.length; i++) {
+        contacts[i].id -= 1
+    }
 }
 
 export const replace = (c) => {
-    let index
-    for (let i = 0; i < contacts.length; i++) {
-        if (contacts[i] === null) {
-            index = i
-            break
-        }
-    }
-    contatcs.splice(index, 1, c)
+    const index = contacts.indexOf(null)
+    contacts.splice(index, 1, c)
 }
 
 export const makeNull = (i) => {

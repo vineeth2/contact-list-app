@@ -7,8 +7,8 @@ import Card from './card/Card';
 function Contact(props) {
     const router = useRouter();
     function showDetailsHandler() {
-        console.log("View page: ", props.index);
-        router.push('/' + props.index, null, { shallow: true });
+        console.log("View page: ", props.id);
+        router.push('/' + props.id, null, { shallow: true });
     }
     return (
         <li className={classes.item}>

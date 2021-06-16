@@ -64,7 +64,7 @@ function NewContactForm(props) {
             </div>
             <div className={classes.control}>
                 <label htmlFor='phone'>Phone Number</label>
-                <input type='number' placeholder="Phone Number" required id='phone' maxlength='16' ref={phoneRef} />
+                <input type='number' placeholder="Phone Number" required id='phone' maxLength='16' ref={phoneRef} />
             </div>
             <div className={classes.control}>
               <label htmlFor='address'>Address</label>

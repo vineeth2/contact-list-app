@@ -6,7 +6,9 @@ function viewContactPage(props) {
     const router = useRouter();
 
     async function editContactHandler() {
-        const ind = props.contactDetails.index;
+        const ind = props.contactDetails.id;
+        console.log('index', ind)
+
         const response = await fetch('/api/contacts', {
             method: 'PATCH',
             body: JSON.stringify(ind),
@@ -15,6 +17,7 @@ function viewContactPage(props) {
             }
         });
         const data = await response.json();
+        console.log('data', data)
         router.push('/edit-contact');
         /*const response2 = await fetch('/api/contacts', {
             method: 'POST',
@@ -33,7 +36,7 @@ function viewContactPage(props) {
     }
 
     async function deleteContactHandler() {
-        const ind = props.contactDetails.index;
+        const ind = props.contactDetails.id;
         console.log('index', ind)
 
         const response = await fetch('/api/contacts', {
@@ -74,6 +77,7 @@ function viewContactPage(props) {
                 phone= {props.contactDetails.phone}
                 email= {props.contactDetails.email}
                 address= {props.contactDetails.address}
+                id= {props.contactDetails.id}
             />
             <div>hello</div>
             <button onClick={editContactHandler}>Edit Contact</button>
@@ -88,11 +92,11 @@ export async function getStaticPaths() {
     const contacts = await response.json();
     
     return {
-        fallback: true,
+        fallback: false,
         paths: 
             contacts.map(contact => ({
                 params: {
-                    contactId: contact.index.toString()
+                    contactId: contact.id.toString()
                 }
             })),
     }
@@ -110,7 +114,7 @@ export async function getStaticProps(context) {
     return {
         props: {
             contactDetails: {
-                index: selectedContact.index,
+                id: selectedContact.id,
                 fname: selectedContact.fname,
                 lname: selectedContact.lname,
                 phone: selectedContact.phone,
