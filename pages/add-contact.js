@@ -31,6 +31,7 @@ function addContactPage() {
             </Head>
             <h1>Add a new contact below</h1>
             <NewContactForm onAddContact={addContactHandler} />
+            <Link href='/'>Back to home</Link>
         </Fragment>
     );
 }

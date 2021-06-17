@@ -114,15 +114,24 @@ export async function getStaticProps(context) {
     const selectedContact = contacts[contactId];
     //const selectedContact = get(contactId);
 
+    if (!selectedContact) {
+        return {
+            props: {
+                contactDetails: {
+                }
+            },
+        }
+    }
+
     return {
         props: {
             contactDetails: {
-                id: selectedContact.id,
-                fname: selectedContact.fname,
-                lname: selectedContact.lname,
-                phone: selectedContact.phone,
-                email: selectedContact.email,
-                address: selectedContact.address
+                id: selectedContact?.id,
+                fname: selectedContact?.fname,
+                lname: selectedContact?.lname,
+                phone: selectedContact?.phone,
+                email: selectedContact?.email,
+                address: selectedContact?.address
             }
         },
     };
