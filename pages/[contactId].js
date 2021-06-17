@@ -114,6 +114,14 @@ export async function getStaticProps(context) {
     const selectedContact = contacts[contactId];
     //const selectedContact = get(contactId);
 
+    if (!selectedContact) {
+        return {
+            props: {
+                contactDetails: {}
+            }
+        }
+    };
+
     return {
         props: {
             contactDetails: {
