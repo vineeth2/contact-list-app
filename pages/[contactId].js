@@ -91,7 +91,7 @@ function viewContactPage(props) {
 
 
 export async function getStaticPaths() {
-    const response = await fetch('http://localhost:3000/api/contacts');
+    const response = await fetch('/api/contacts');
     const contacts = await response.json();
     
     return {
@@ -108,7 +108,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     const contactId = context.params.contactId;
 
-    const response = await fetch('http://localhost:3000/api/contacts');
+    const response = await fetch('/api/contacts');
     const contacts = await response.json();
 
     const selectedContact = contacts[contactId];
