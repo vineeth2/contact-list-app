@@ -1,4 +1,21 @@
-export const contacts = []
+export const contacts = [
+    {
+        fname: "Eric",
+        lname: "Shavkin",
+        phone: 1234567890,
+        email: "eric.shavkin@ondotsystems.com",
+        address: "123 Street Way",
+        id: 0
+    },
+    {
+        fname: "Fname",
+        lname: "Lname",
+        phone: 1111111111,
+        email: "fnamelname@gmail.com",
+        address: "098 Street Drive",
+        id: 1
+    }
+]
 
 export const add = (c) => {
     contacts.push(c)
