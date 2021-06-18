@@ -8,7 +8,7 @@ function editContactPage() {
     const router = useRouter();
     async function editContactHandler(enteredContactData) {
         console.log('contact data', enteredContactData)
-        const response = await fetch('/api/contacts', {
+        const response = await fetch('http://localhost:3000/api/contacts', {
             method: 'PUT', 
             body: JSON.stringify(enteredContactData),
             headers: {

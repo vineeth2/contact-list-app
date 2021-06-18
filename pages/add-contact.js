@@ -10,7 +10,7 @@ function addContactPage() {
     const router = useRouter();
     async function addContactHandler(enteredContactData) {
         console.log('entered data', enteredContactData)
-        const response = await fetch('/api/contacts', {
+        const response = await fetch('http://localhost:3000/api/contacts', {
             method: 'POST',
             body: JSON.stringify(enteredContactData),
             headers: {
