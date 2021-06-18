@@ -1,9 +1,7 @@
 import { useRef } from 'react';
 import Card from './card/Card';
 import classes from './NewContactForm.module.css';
-//import { numericInput, enforceFormat, validatePhone } from './FormValidation';
 import React, { useState, useEffect } from 'react';
-//import React from 'react';
 import { Alert } from 'reactstrap';
 
 function EditContactForm(props) {
@@ -99,7 +97,7 @@ function EditContactForm(props) {
 
               { emailValid ? null 
                            : (<Alert color="warning">
-                                <span className="alert-icon"><i class="ni ni-like-2"></i></span>
+                                <span className="alert-icon"><i className="ni ni-like-2"></i></span>
                                 <span className="alert-text"><strong>Please Enter a Valid Email.</strong></span>
                               </Alert>) }
             </div>
@@ -113,7 +111,7 @@ function EditContactForm(props) {
                 onChange={checkPhone} />
               { phoneValid ? null 
                            : (<Alert color="warning">
-                                <span className="alert-icon"><i class="ni ni-like-2"></i></span>
+                                <span className="alert-icon"><i className="ni ni-like-2"></i></span>
                                 <span className="alert-text"><strong>Please Enter a Valid Number.</strong></span>
                               </Alert>)}
             </div>

@@ -3,3 +3,8 @@
     max-width: 50rem;
     text-align: center;
 }
+
+.a {
+    color: blue;
+    text-decoration: underline;
+}

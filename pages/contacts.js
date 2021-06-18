@@ -1,4 +1,3 @@
-//Contacts page code
 import ContactList from '../components/ContactList';
 import Head from 'next/head';
 import { Fragment } from 'react';
@@ -9,6 +8,7 @@ function ContactsPage({ contacts }) {
             <Head>
                 <title>View Contact List</title>
             </Head>
+            <h1>Your Contact List</h1>
             <ContactList contacts={contacts} />
         </Fragment>
     );
@@ -35,6 +35,7 @@ export async function getStaticProps() {
                 address: contact.address,
             }))
         },
+        revalidate: 10
     }
 }
 

@@ -12,6 +12,7 @@ function ContactList(props) {
             phone={contact.phone}
             address={contact.address}
             id={contact.id}
+            key={contact.id}
             />
         ))}
         </ul>

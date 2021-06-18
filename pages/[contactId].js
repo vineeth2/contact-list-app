@@ -20,20 +20,6 @@ function viewContactPage(props) {
         const data = await response.json();
         console.log('data', data)
         router.push('/edit-contact');
-        /*const response2 = await fetch('/api/contacts', {
-            method: 'POST',
-            body: JSON.stringify(enteredContactData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const data = await response2.json();
-        console.log('data', data)
-        router.push('/contacts')
-
-        return (
-            <NewContactForm onAddContact={addContact} />
-        )*/
     }
 
     async function deleteContactHandler() {
@@ -50,18 +36,6 @@ function viewContactPage(props) {
         const data = await response.json();
 
         console.log('data', data);
-        //console.log('contacts', contacts);
-
-        //const del = contacts.splice(ind, 1);
-        //console.log('del', del);
-
-        /*
-        contacts.forEach((contact, m) => {  //attempt at a loop to decrement index
-            console.log('contact', contact);  //problem comes when trying to view details
-            if (contact.index > ind) {        //indices no longer match 
-                contact.index -= 1;
-            }
-        });*/
 
         router.push('/contacts');
     }
@@ -95,7 +69,7 @@ export async function getStaticPaths() {
     const contacts = await response.json();
     
     return {
-        fallback: false,
+        fallback: true,
         paths: 
             contacts.map(contact => ({
                 params: {
@@ -112,7 +86,6 @@ export async function getStaticProps(context) {
     const contacts = await response.json();
 
     const selectedContact = contacts[contactId];
-    //const selectedContact = get(contactId);
 
     if (!selectedContact) {
         return {

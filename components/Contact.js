@@ -2,8 +2,6 @@ import { useRouter } from 'next/router'
 import classes from './Contact.module.css';
 import Card from './card/Card';
 
-//Add image functionality
-
 function Contact(props) {
     const router = useRouter();
     function showDetailsHandler() {
