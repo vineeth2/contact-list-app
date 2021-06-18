@@ -16,7 +16,7 @@ function ContactsPage({ contacts }) {
 
 export async function getStaticProps() {
 
-    const response = await fetch('http://localhost:3000/api/contacts', {
+    const response = await fetch('contact-list-app-azure.vercel.app/api/contacts', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
