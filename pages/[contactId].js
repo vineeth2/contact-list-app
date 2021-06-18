@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import ContactDetails from '../components/ContactDetails'
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import classes from './[contactId].module.css';
 
 function viewContactPage(props) {
     const router = useRouter();
@@ -57,8 +58,8 @@ function viewContactPage(props) {
                 address= {props.contactDetails.address}
                 id= {props.contactDetails.id}
             />
-            <button onClick={editContactHandler}>Edit Contact</button>
-            <button onClick={deleteContactHandler}>Delete Contact</button>
+            <button className={classes.editButton} onClick={editContactHandler}>Edit Contact</button>
+            <button className={classes.deleteButton} onClick={deleteContactHandler}>Delete Contact</button>
        </Fragment>
     );
 }
