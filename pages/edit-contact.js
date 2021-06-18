@@ -8,7 +8,7 @@ function editContactPage() {
     const router = useRouter();
     async function editContactHandler(enteredContactData) {
         console.log('contact data', enteredContactData)
-        const response = await fetch('${process.env.DOMAIN}/api/contacts', {
+        const response = await fetch('contact-list-app-azure.vercel.app/api/contacts', {
             method: 'PUT', 
             body: JSON.stringify(enteredContactData),
             headers: {

@@ -10,7 +10,7 @@ function addContactPage() {
     const router = useRouter();
     async function addContactHandler(enteredContactData) {
         console.log('entered data', enteredContactData)
-        const response = await fetch('${process.env.DOMAIN}/api/contacts', {
+        const response = await fetch('contact-list-app-azure.vercel.app/api/contacts', {
             method: 'POST',
             body: JSON.stringify(enteredContactData),
             headers: {
